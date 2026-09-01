@@ -7,9 +7,9 @@ double altura;
 double peso;
 double IMC;
     System.out.println("Digite seu peso em Kg: ");
-    peso =  input.nextInt();
+    peso =  input.nextDouble();
     System.out.println("Digite sua altura em metros:" );
-    altura = input.nextInt();
+    altura = input.nextDouble();
 
     IMC = peso/altura * altura;
     System.out.println("O IMC calculado foi:"+ " "+ IMC);
