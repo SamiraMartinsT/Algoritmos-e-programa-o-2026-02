@@ -2,55 +2,55 @@
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 void main() {
     Scanner input = new Scanner(System.in);
-    double salario;
-    double salariomin;
-    double salarioT = 0;
-    int filhos;
-    int filhosT=0;
-    int filhosphab=0;
-    int resposta;
-    int habTo = 0;
-    double mediaSA = 0;
-    int mediaFI = 0;
-    double salariHabitante = 0;
-    double salarioQtdAbaixoMinimo =0;
-    double salariopercabaixomin;
-    double maiorS = Double.MIN_VALUE;
+   double salario = 0;
+        int numerofilhos = 0;
+        double somasalarios = 0;
+        int qtdePessoas = 0;
+        double mediasalarios = 0;
+        double somafilhos = 0;
+        double mediafilhos = 0;
+        double maiorsalario = 0;
+        double qtdeMenorSalarioMinimo = 0;
+        int continuar = 1;
 
-    System.out.println("Digite o valor do salário mínimo:");
-    salariomin = input.nextDouble();
 
-    do {
-        System.out.println("Digite o salário :");
-        salario = input.nextDouble();
-        if (maiorS < salariHabitante) {
-            maiorS = salariHabitante;
+        while (continuar == 1) {
+            System.out.println("Informe seu salário: ");
+            salario = input.nextDouble();
+            System.out.println("Informe o número de filhos: ");
+            numerofilhos = input.nextInt();
+
+            somasalarios = somasalarios + salario;
+            somafilhos = somafilhos + numerofilhos;
+            qtdePessoas = qtdePessoas + 1;
+
+            if (salario > maiorsalario){
+                maiorsalario = salario;
+            }
+
+            if (salario <= 1621.0){
+                qtdeMenorSalarioMinimo++;
+            }
+
+
+            System.out.println("Deseja continuar? ");
+            System.out.println("1 - SIM");
+            System.out.println("2 - NAO");
+            System.out.println("Selecione uma opção: ");
+            continuar = input.nextInt();
+
         }
-        if (salariHabitante < salariomin) {
-            salarioQtdAbaixoMinimo++;
-        }
-        salarioT = +salariHabitante;
+        mediasalarios = somasalarios / qtdePessoas;
+        System.out.println("A media dos salario é: " + mediasalarios);
 
-        System.out.println("Digite a quantidade de filhos:");
-        filhos = input.nextInt();
+        mediafilhos = somafilhos / qtdePessoas;
+        System.out.println("A media de filhos é: " + mediafilhos);
 
-        filhos += filhosT;
-        filhosT += filhosphab;
-        habTo++;
-
-        System.out.println("Deseja continuar? S/N");
-        System.out.println("[1] Sim  [2] Não");
-        resposta = input.nextInt();
-    }
-    while (resposta != 2);
-    {
-        mediaSA = salarioT / habTo;
-        mediaFI = filhosT / habTo;
-        salariopercabaixomin = salarioQtdAbaixoMinimo / habTo;
-        System.out.println("Salário médio da população: " + mediaSA);
-        System.out.println("Número médio de filhos: " + mediaFI);
-        System.out.printf("Maior salário R$ %.2f\n", maiorS);
-        System.out.printf("Percentual de pessoas com salário abaixo do mínimo: %.2f", salariopercabaixomin);
+        System.out.println("O maior salário é: " + maiorsalario);
+        System.out.println("Quantidade de pessoas que " +
+                "recebem até 1 salario mínimo " + qtdeMenorSalarioMinimo);
+        System.out.println("% de pessoas abaixo de 1 salario minimo: " +
+                qtdeMenorSalarioMinimo / qtdePessoas * 100 + "%");
     }
 }
 
